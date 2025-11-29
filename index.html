@@ -387,19 +387,23 @@
             <section class="card">
                 <div class="card-inner">
                     <div class="hero-topline">Portfolio &amp; Selected Work</div>
+
                     <div class="hero-title">
-                        Building <span>automated financial systems</span> from math, code and logs.
+                        Designing <span>automated financial systems</span> that can be trusted.
                     </div>
+
                     <div class="hero-meta">
-                        Final-year <b>Mathematics undergraduate</b> at Jilin University, China.
-                        I design and implement <b>end-to-end trading automation, ledger systems, and data pipelines</b>
-                        with a focus on correctness, reproducibility, and portability.
+                        Final-year <b>Mathematics undergraduate</b> at Jilin University, China.<br>
+                        I focus on building <b>automated financial systems, ledger engines, and data
+                            infrastructure</b> with strong guarantees on correctness, auditability, and
+                        long-term maintainability.
                     </div>
+
                     <div class="hero-tags">
-                        <span class="tag">Python · Decimal · DuckDB</span>
-                        <span class="tag">Automated Trading</span>
-                        <span class="tag">Time-series &amp; ARMA</span>
-                        <span class="tag">Git-centric workflows</span>
+                        <span class="tag">Automated trading systems</span>
+                        <span class="tag">Ledger &amp; accounting engines</span>
+                        <span class="tag">Decimal · DuckDB · Parquet</span>
+                        <span class="tag">Reproducible infrastructure</span>
                     </div>
 
                     <div class="layout">
@@ -407,25 +411,33 @@
                         <section class="section">
                             <div class="section-title-row">
                                 <div class="section-title">About</div>
-                                <div class="section-sub">Mathematics → Systems / Data</div>
+                                <div class="section-sub">Mathematics → Automated Systems</div>
                             </div>
                             <div class="section-body">
                                 <p>
-                                    I enjoy building <b>long-lived systems</b> where financial logic, data storage,
-                                    and automation must stay correct under constant change.
+                                    I enjoy building <b>long-lived infrastructure</b> where real financial flows,
+                                    data storage, and automation must stay consistent under constant change.
                                 </p>
                                 <p>
-                                    My work combines:
+                                    My background combines:
                                 </p>
                                 <ul style="margin: 4px 0 8px 18px; padding: 0; color: #cfd6ff;">
-                                    <li>Mathematical thinking (probability, statistics, time-series)</li>
-                                    <li>Robust code in Python for real trading environments</li>
-                                    <li>Strict logging, auditing, and reproducible setups</li>
+                                    <li>Mathematics (analysis, probability, time-series, mordern algebra)</li>
+                                    <li>Machine learning (ANN, CNN, RNN, G-CNN, PINN)</li>
+                                    <li>Low-level algorithms (FFT/NTT) and systems experiments</li>
                                 </ul>
+                                <p>
+                                    I am also the author of <b>"Differential Informed Auto-Encoder"</b>
+                                    (arXiv:2410.18593), where I explore how to learn latent differential
+                                    structures from data and reconstruct them via physics-informed neural
+                                    networks. This experience shaped how I think about rigor and
+                                    reproducibility in later engineering work.
+                                </p>
                                 <p style="color: var(--text-soft); font-size: 12px;">
-                                    I am currently preparing applications for <b>Computer Science / Data Science</b>
-                                    Master’s programmes in Europe (e.g. Finland), aiming to focus on
-                                    <b>systems, data infrastructure, and algorithmic trading research</b>.
+                                    Currently I am moving my focus from pure research into
+                                    <b>infrastructure for automated trading and personal finance</b>,
+                                    mainly through my ongoing projects <b>Automata Virtual Machine (AVM)</b>
+                                    and <b>regdel</b>.
                                 </p>
                             </div>
                         </section>
@@ -434,7 +446,7 @@
                         <section class="section">
                             <div class="section-title-row">
                                 <div class="section-title">Key Projects</div>
-                                <div class="section-sub">Selected work (personal)</div>
+                                <div class="section-sub">Selected personal work</div>
                             </div>
 
                             <div class="project-list">
@@ -442,23 +454,26 @@
                                 <article class="project">
                                     <div class="project-header">
                                         <div class="project-name">Automata Virtual Machine (AVM)</div>
-                                        <div class="project-year">2024–2025</div>
+                                        <div class="project-year">2024–</div>
                                     </div>
                                     <div class="project-desc">
-                                        A unified engine that coordinates multiple trading “automata” across exchanges,
-                                        using <b>strict decimal arithmetic</b>, centralized logging, and a portable
-                                        configuration system. Designed to mix real and simulated trades safely.
+                                        A unified architecture for managing multiple trading “automata” across
+                                        exchanges such as Hyperliquid, Binance, and dYdX. Currently the ABM
+                                        automaton has been run live; other automata and the shared infrastructure
+                                        are under active development. The design emphasizes decimal-precision
+                                        arithmetic, centralized logging, and a common data layer for both
+                                        real trades and backtests.
                                     </div>
                                     <div class="project-tags">
                                         <span class="project-tag">Python</span>
+                                        <span class="project-tag">Automated trading</span>
                                         <span class="project-tag">Decimal</span>
-                                        <span class="project-tag">Binance API</span>
-                                        <span class="project-tag">Risk management</span>
+                                        <span class="project-tag">Exchange APIs</span>
                                     </div>
                                     <div class="project-links">
-                                        <!-- 替换成真实链接 -->
+                                        <!-- 如果仓库名不同，这里改成你真实的链接 -->
                                         <a class="project-link"
-                                            href="https://github.com/YOUR_GITHUB/AutomataVirtualMachine" target="_blank"
+                                            href="https://github.com/jerzha40/AutomataVirtualMachine" target="_blank"
                                             rel="noreferrer">
                                             GitHub →
                                         </a>
@@ -472,44 +487,45 @@
                                         <div class="project-year">2024–</div>
                                     </div>
                                     <div class="project-desc">
-                                        A custom financial ledger built around <b>double-entry style records</b>,
-                                        reproducible logs, and algebraic structures (e.g. semigroups for ledger slices).
-                                        Carefully designed to keep long-term personal and trading finances consistent.
+                                        A self-designed accounting system for tracking both personal and trading
+                                        finances. regdel is built around algebraic <b>ledger slices</b>
+                                        (semigroup structures) and a double-entry-inspired model, producing
+                                        audit-ready logs that can be replayed and checked over long time spans.
                                     </div>
                                     <div class="project-tags">
-                                        <span class="project-tag">Python</span>
-                                        <span class="project-tag">Accounting systems</span>
+                                        <span class="project-tag">Ledger design</span>
+                                        <span class="project-tag">Accounting logic</span>
                                         <span class="project-tag">Data integrity</span>
                                     </div>
                                     <div class="project-links">
-                                        <a class="project-link" href="https://github.com/YOUR_GITHUB/regdel"
+                                        <a class="project-link" href="https://github.com/jerzha40/regdel"
                                             target="_blank" rel="noreferrer">
                                             GitHub →
                                         </a>
                                     </div>
                                 </article>
 
-                                <!-- Project 3: Time-series / trading -->
+                                <!-- Project 3: Differential Informed Auto-Encoder -->
                                 <article class="project">
                                     <div class="project-header">
-                                        <div class="project-name">Time-series Engines &amp; Bollinger “Fishing” Bots
-                                        </div>
-                                        <div class="project-year">2023–</div>
+                                        <div class="project-name">Differential Informed Auto-Encoder</div>
+                                        <div class="project-year">2024</div>
                                     </div>
                                     <div class="project-desc">
-                                        A collection of strategies and utilities around Bollinger-band-based
-                                        “fishing” models, ARMA-style smoothing, and portfolio-level risk control.
-                                        Includes DuckDB/Parquet pipelines for efficient historical analysis.
+                                        Research project and arXiv preprint (arXiv:2410.18593) on learning latent
+                                        differential structures from data. Combines ideas from representation
+                                        learning and physics-informed modeling, and reflects my earlier focus on
+                                        mathematical modeling and neural networks.
                                     </div>
                                     <div class="project-tags">
-                                        <span class="project-tag">Time-series</span>
-                                        <span class="project-tag">DuckDB</span>
-                                        <span class="project-tag">Backtesting</span>
+                                        <span class="project-tag">Representation learning</span>
+                                        <span class="project-tag">Physics-informed NN</span>
+                                        <span class="project-tag">Research</span>
                                     </div>
                                     <div class="project-links">
-                                        <a class="project-link" href="https://github.com/YOUR_GITHUB" target="_blank"
+                                        <a class="project-link" href="https://arxiv.org/abs/2410.18593" target="_blank"
                                             rel="noreferrer">
-                                            More on GitHub →
+                                            arXiv →
                                         </a>
                                     </div>
                                 </article>
