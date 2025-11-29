@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>YOUR NAME – Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description"
+        content="Personal portfolio of YOUR NAME – mathematics student and systems / trading automation developer." />
+    <style>
+        :root {
+            --bg: #050710;
+            --bg-elevated: #0b0f1a;
+            --accent: #4e8cff;
+            --accent-soft: rgba(78, 140, 255, 0.15);
+            --text: #e4e7f5;
+            --text-soft: #a3acc7;
+            --border: #1b2135;
+            --tag-bg: #151b2b;
+            --radius-lg: 18px;
+            --radius-sm: 999px;
+            --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.55);
+            --max-width: 880px;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top, #141a33 0, #050710 55%);
+            color: var(--text);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 32px 16px 48px;
+        }
+
+        .shell {
+            width: 100%;
+            max-width: var(--max-width);
+        }
+
+        /* Header */
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            gap: 16px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 20%, #4e8cff, #141a2c);
+            border: 1px solid #5f8fff;
+            box-shadow: 0 0 0 1px rgba(94, 149, 255, 0.4);
+        }
+
+        .title {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .title-main {
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            font-size: 15px;
+            text-transform: uppercase;
+        }
+
+        .title-sub {
+            font-size: 13px;
+            color: var(--text-soft);
+        }
+
+        .header-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .pill-link {
+            border-radius: var(--radius-sm);
+            padding: 6px 12px;
+            font-size: 13px;
+            border: 1px solid rgba(158, 180, 255, 0.4);
+            background: rgba(11, 15, 26, 0.9);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pill-link:hover {
+            border-color: var(--accent);
+        }
+
+        .pill-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: #60f6b1;
+            box-shadow: 0 0 8px rgba(96, 246, 177, 0.9);
+        }
+
+        /* Main card */
+
+        .card {
+            border-radius: 26px;
+            background: radial-gradient(circle at top left, #1f2742 0, #070916 55%);
+            border: 1px solid rgba(108, 130, 210, 0.35);
+            box-shadow: var(--shadow-soft);
+            padding: 24px 22px 26px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: -80px;
+            background:
+                radial-gradient(circle at 0 0, rgba(120, 176, 255, 0.12), transparent 55%),
+                radial-gradient(circle at 100% 40%, rgba(104, 94, 255, 0.12), transparent 55%);
+            opacity: 0.9;
+            pointer-events: none;
+        }
+
+        .card-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-topline {
+            font-size: 12px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            margin-bottom: 8px;
+        }
+
+        .hero-title {
+            font-size: 28px;
+            line-height: 1.25;
+            font-weight: 650;
+            margin-bottom: 10px;
+        }
+
+        .hero-title span {
+            background: linear-gradient(120deg, #9bc2ff, #f2f4ff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-meta {
+            font-size: 13px;
+            color: var(--text-soft);
+            margin-bottom: 12px;
+        }
+
+        .hero-meta b {
+            color: #dee4ff;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 18px;
+        }
+
+        .tag {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: var(--tag-bg);
+            border: 1px solid rgba(132, 158, 255, 0.4);
+            color: #c7cff7;
+        }
+
+        /* Sections */
+
+        .layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.95fr);
+            gap: 18px;
+        }
+
+        @media (max-width: 800px) {
+            .layout {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .section {
+            border-radius: 20px;
+            padding: 14px 14px 16px;
+            background: rgba(4, 7, 20, 0.7);
+            border: 1px solid rgba(91, 118, 210, 0.5);
+            backdrop-filter: blur(20px);
+        }
+
+        .section-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 13px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #9dabff;
+        }
+
+        .section-sub {
+            font-size: 12px;
+            color: var(--text-soft);
+        }
+
+        .section-body {
+            font-size: 13px;
+            color: #d3ddff;
+        }
+
+        .section-body p {
+            margin: 0 0 8px;
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Projects */
+
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .project {
+            border-radius: 14px;
+            padding: 9px 10px;
+            border: 1px solid rgba(122, 146, 235, 0.7);
+            background: linear-gradient(135deg, rgba(13, 20, 48, 0.9), rgba(10, 12, 32, 0.95));
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 3px;
+        }
+
+        .project-name {
+            font-size: 13px;
+            font-weight: 550;
+            color: #e8edff;
+        }
+
+        .project-year {
+            font-size: 11px;
+            color: #a2b2ff;
+        }
+
+        .project-desc {
+            font-size: 12px;
+            color: #c1c9f0;
+            margin-bottom: 5px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .project-tag {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: rgba(12, 19, 57, 0.95);
+            border: 1px solid rgba(115, 146, 255, 0.7);
+            color: #c6d0ff;
+        }
+
+        .project-links {
+            margin-left: auto;
+            font-size: 11px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .project-link {
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            color: #99c1ff;
+        }
+
+        /* Footer small row */
+
+        .footer-row {
+            margin-top: 14px;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+            font-size: 11px;
+            color: var(--text-soft);
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-links {
+                align-self: stretch;
+            }
+
+            .card {
+                padding: 20px 16px 22px;
+            }
+
+            .footer-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <main class="shell">
+            <!-- Top bar -->
+            <header class="header">
+                <div class="brand">
+                    <div class="avatar"></div>
+                    <div class="title">
+                        <div class="title-main">YOUR NAME</div>
+                        <div class="title-sub">Mathematics → Systems &amp; Trading Automation</div>
+                    </div>
+                </div>
+                <div class="header-links">
+                    <a class="pill-link" href="mailto:your.email@example.com">
+                        <span class="pill-dot"></span>
+                        <span>Available for Master’s programs 2026</span>
+                    </a>
+                    <a class="pill-link" href="https://github.com/YOUR_GITHUB" target="_blank" rel="noreferrer">
+                        GitHub
+                    </a>
+                    <!-- 若有简历 PDF，可改成真实链接 -->
+                    <!-- <a class="pill-link" href="cv.pdf" target="_blank" rel="noreferrer">CV</a> -->
+                </div>
+            </header>
+
+            <!-- Main card -->
+            <section class="card">
+                <div class="card-inner">
+                    <div class="hero-topline">Portfolio &amp; Selected Work</div>
+                    <div class="hero-title">
+                        Building <span>automated financial systems</span> from math, code and logs.
+                    </div>
+                    <div class="hero-meta">
+                        Final-year <b>Mathematics undergraduate</b> at Jilin University, China.
+                        I design and implement <b>end-to-end trading automation, ledger systems, and data pipelines</b>
+                        with a focus on correctness, reproducibility, and portability.
+                    </div>
+                    <div class="hero-tags">
+                        <span class="tag">Python · Decimal · DuckDB</span>
+                        <span class="tag">Automated Trading</span>
+                        <span class="tag">Time-series &amp; ARMA</span>
+                        <span class="tag">Git-centric workflows</span>
+                    </div>
+
+                    <div class="layout">
+                        <!-- Left: About / Background -->
+                        <section class="section">
+                            <div class="section-title-row">
+                                <div class="section-title">About</div>
+                                <div class="section-sub">Mathematics → Systems / Data</div>
+                            </div>
+                            <div class="section-body">
+                                <p>
+                                    I enjoy building <b>long-lived systems</b> where financial logic, data storage,
+                                    and automation must stay correct under constant change.
+                                </p>
+                                <p>
+                                    My work combines:
+                                </p>
+                                <ul style="margin: 4px 0 8px 18px; padding: 0; color: #cfd6ff;">
+                                    <li>Mathematical thinking (probability, statistics, time-series)</li>
+                                    <li>Robust code in Python for real trading environments</li>
+                                    <li>Strict logging, auditing, and reproducible setups</li>
+                                </ul>
+                                <p style="color: var(--text-soft); font-size: 12px;">
+                                    I am currently preparing applications for <b>Computer Science / Data Science</b>
+                                    Master’s programmes in Europe (e.g. Finland), aiming to focus on
+                                    <b>systems, data infrastructure, and algorithmic trading research</b>.
+                                </p>
+                            </div>
+                        </section>
+
+                        <!-- Right: Projects -->
+                        <section class="section">
+                            <div class="section-title-row">
+                                <div class="section-title">Key Projects</div>
+                                <div class="section-sub">Selected work (personal)</div>
+                            </div>
+
+                            <div class="project-list">
+                                <!-- Project 1: AVM -->
+                                <article class="project">
+                                    <div class="project-header">
+                                        <div class="project-name">Automata Virtual Machine (AVM)</div>
+                                        <div class="project-year">2024–2025</div>
+                                    </div>
+                                    <div class="project-desc">
+                                        A unified engine that coordinates multiple trading “automata” across exchanges,
+                                        using <b>strict decimal arithmetic</b>, centralized logging, and a portable
+                                        configuration system. Designed to mix real and simulated trades safely.
+                                    </div>
+                                    <div class="project-tags">
+                                        <span class="project-tag">Python</span>
+                                        <span class="project-tag">Decimal</span>
+                                        <span class="project-tag">Binance API</span>
+                                        <span class="project-tag">Risk management</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <!-- 替换成真实链接 -->
+                                        <a class="project-link"
+                                            href="https://github.com/YOUR_GITHUB/AutomataVirtualMachine" target="_blank"
+                                            rel="noreferrer">
+                                            GitHub →
+                                        </a>
+                                    </div>
+                                </article>
+
+                                <!-- Project 2: regdel / ledger -->
+                                <article class="project">
+                                    <div class="project-header">
+                                        <div class="project-name">regdel – Ledger &amp; Accounting Engine</div>
+                                        <div class="project-year">2024–</div>
+                                    </div>
+                                    <div class="project-desc">
+                                        A custom financial ledger built around <b>double-entry style records</b>,
+                                        reproducible logs, and algebraic structures (e.g. semigroups for ledger slices).
+                                        Carefully designed to keep long-term personal and trading finances consistent.
+                                    </div>
+                                    <div class="project-tags">
+                                        <span class="project-tag">Python</span>
+                                        <span class="project-tag">Accounting systems</span>
+                                        <span class="project-tag">Data integrity</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a class="project-link" href="https://github.com/YOUR_GITHUB/regdel"
+                                            target="_blank" rel="noreferrer">
+                                            GitHub →
+                                        </a>
+                                    </div>
+                                </article>
+
+                                <!-- Project 3: Time-series / trading -->
+                                <article class="project">
+                                    <div class="project-header">
+                                        <div class="project-name">Time-series Engines &amp; Bollinger “Fishing” Bots
+                                        </div>
+                                        <div class="project-year">2023–</div>
+                                    </div>
+                                    <div class="project-desc">
+                                        A collection of strategies and utilities around Bollinger-band-based
+                                        “fishing” models, ARMA-style smoothing, and portfolio-level risk control.
+                                        Includes DuckDB/Parquet pipelines for efficient historical analysis.
+                                    </div>
+                                    <div class="project-tags">
+                                        <span class="project-tag">Time-series</span>
+                                        <span class="project-tag">DuckDB</span>
+                                        <span class="project-tag">Backtesting</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a class="project-link" href="https://github.com/YOUR_GITHUB" target="_blank"
+                                            rel="noreferrer">
+                                            More on GitHub →
+                                        </a>
+                                    </div>
+                                </article>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- Bottom row: contact / misc -->
+                    <div class="footer-row">
+                        <div>
+                            Open to collaboration, research-oriented master’s programmes,
+                            and systems / trading related projects.
+                        </div>
+                        <div>
+                            Contact: <a href="mailto:your.email@example.com">your.email@example.com</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
