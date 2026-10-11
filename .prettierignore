@@ -1,0 +1,4 @@
+# Liquid / Jekyll templates are not plain HTML.
+# Do not feed these files to the default Prettier HTML parser.
+overrides/_includes/**
+_pages/*.html
