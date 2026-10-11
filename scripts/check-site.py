@@ -5,6 +5,7 @@ Standard library only; runs after the Jekyll build in GitHub Actions.
 """
 
 import sys
+import re
 from pathlib import Path
 
 root = Path(sys.argv[1] if len(sys.argv) > 1 else "_site")
@@ -65,7 +66,7 @@ if 'href="https://bsky.app/profile/jerzha40.bsky.social"' not in home:
     raise SystemExit("Bluesky profile URL is missing or malformed.")
 if 'href="https://www.linkedin.com/in/jinrui-zhang-707025341"' not in home:
     raise SystemExit("LinkedIn profile URL is missing or malformed.")
-if "arXiv author profile" not in home or "(to add)" not in home:
+if "arXiv author profile" not in home or not re.search(r"\\(to\\s+add\\)", home):
     raise SystemExit("Unconfigured arXiv author profile slot should remain a nonlinked placeholder.")
 if 'href="https://scholar.google.com/citations?user=QpBRjl8AAAAJ' not in home:
     raise SystemExit("Configured Google Scholar profile link is missing.")
