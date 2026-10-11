@@ -1,0 +1,23 @@
+---
+layout: archive
+title: "Blog Posts"
+permalink: /year-archive/
+author_profile: true
+---
+
+Research notes, project updates, and short essays, organized by year.
+
+{% if site.posts.size > 0 %}
+  {% assign ordered_posts = site.posts | sort: "date" | reverse %}
+  {% assign previous_year = "" %}
+  {% for post in ordered_posts %}
+    {% assign year = post.date | date: "%Y" %}
+    {% if year != previous_year %}
+      <h2 id="{{ year }}" class="archive__subtitle">{{ year }}</h2>
+      {% assign previous_year = year %}
+    {% endif %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% else %}
+  *No public blog posts yet.* The archive is ready for its first entry.
+{% endif %}

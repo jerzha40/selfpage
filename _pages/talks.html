@@ -1,0 +1,17 @@
+---
+layout: archive
+title: "Talks and Presentations"
+permalink: /talks/
+author_profile: true
+---
+
+A place for seminars, presentations and other public talks.
+
+{% if site.talks.size > 0 %}
+  {% assign entries = site.talks | sort: "date" | reverse %}
+  {% for post in entries %}
+    {% include archive-single-talk.html %}
+  {% endfor %}
+{% else %}
+  *No talks have been added to this archive yet.*
+{% endif %}

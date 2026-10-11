@@ -1,11 +1,17 @@
-# Academic Pages / Minimal Mistakes primary menu.
+# Standard Academic Pages destinations, plus SelfRes research and story.
 main:
   - title: "Research"
     url: /research/
-  - title: "Preprints"
+  - title: "Publications"
     url: /publications/
   - title: "Pantheon"
     url: /portfolio/
+  - title: "Blog Posts"
+    url: /year-archive/
+  - title: "Talks"
+    url: /talks/
+  - title: "Teaching"
+    url: /teaching/
   - title: "My Story"
     url: /story/
   - title: "CV"

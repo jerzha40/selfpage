@@ -23,9 +23,15 @@ rsync -a --delete "$THEME/" "$DEST/"
 # Discard upstream sample works and navigation, keeping the licensed theme code.
 rm -rf "$DEST/_pages" "$DEST/_portfolio" "$DEST/_publications" \
   "$DEST/_talks" "$DEST/_teaching" "$DEST/_posts" "$DEST/_drafts"
-mkdir -p "$DEST/_data" "$DEST/_pages" "$DEST/_portfolio"
+mkdir -p "$DEST/_data" "$DEST/_pages" "$DEST/_portfolio" "$DEST/_publications" \
+  "$DEST/_talks" "$DEST/_teaching" "$DEST/_posts" "$DEST/_drafts"
 rsync -a "$SOURCE/_pages/" "$DEST/_pages/"
 rsync -a "$SOURCE/_portfolio/" "$DEST/_portfolio/"
+rsync -a "$SOURCE/_publications/" "$DEST/_publications/"
+rsync -a "$SOURCE/_talks/" "$DEST/_talks/"
+rsync -a "$SOURCE/_teaching/" "$DEST/_teaching/"
+rsync -a "$SOURCE/_posts/" "$DEST/_posts/"
+rsync -a "$SOURCE/_drafts/" "$DEST/_drafts/"
 cp "$SOURCE/_data/navigation.yml" "$DEST/_data/navigation.yml"
 cp "$SOURCE/_config_selfres.yml" "$DEST/_config_selfres.yml"
 cp "$SOURCE/_config_docker.yml" "$DEST/_config_docker.yml"
@@ -54,6 +60,11 @@ case "$MODE" in
         # Compare file contents, not only timestamps: reliable with Docker Desktop / NTFS.
         rsync -a --checksum --delete "$SOURCE/_pages/" "$DEST/_pages/"
         rsync -a --checksum --delete "$SOURCE/_portfolio/" "$DEST/_portfolio/"
+        rsync -a --checksum --delete "$SOURCE/_publications/" "$DEST/_publications/"
+        rsync -a --checksum --delete "$SOURCE/_talks/" "$DEST/_talks/"
+        rsync -a --checksum --delete "$SOURCE/_teaching/" "$DEST/_teaching/"
+        rsync -a --checksum --delete "$SOURCE/_posts/" "$DEST/_posts/"
+        rsync -a --checksum --delete "$SOURCE/_drafts/" "$DEST/_drafts/"
         rsync -a --checksum "$SOURCE/_data/navigation.yml" "$DEST/_data/navigation.yml"
         # Configuration is loaded by Jekyll only at server start.
         # To see config edits, use: docker compose restart selfpage

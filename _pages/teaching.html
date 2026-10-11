@@ -1,0 +1,17 @@
+---
+layout: archive
+title: "Teaching"
+permalink: /teaching/
+author_profile: true
+---
+
+Teaching, tutoring and instructional contributions will be listed here when documented.
+
+{% if site.teaching.size > 0 %}
+  {% assign entries = site.teaching | sort: "date" | reverse %}
+  {% for post in entries %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% else %}
+  *No teaching entries have been added yet.*
+{% endif %}

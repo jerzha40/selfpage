@@ -20,8 +20,10 @@ I am now working to turn selected experiments into **reproducible, documented wo
 ### Explore
 
 - [Research]({{ '/research/' | relative_url }}) — the problems I am working on
-- [Preprints]({{ '/publications/' | relative_url }}) — public manuscripts and preprints
+- [Publications]({{ '/publications/' | relative_url }}) — publications and preprints
 - [Pantheon]({{ '/portfolio/' | relative_url }}) — selected experiments and finished works
+- [Blog Posts]({{ '/year-archive/' | relative_url }}) — notes and project updates
+- [Talks]({{ '/talks/' | relative_url }}) and [Teaching]({{ '/teaching/' | relative_url }}) — future academic activity records
 - [My Story]({{ '/story/' | relative_url }}) — how the work began
 - [CV]({{ '/cv/' | relative_url }}) — a compact academic record
 - [Contact]({{ '/contact/' | relative_url }}) — write to me
