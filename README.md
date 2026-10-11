@@ -50,6 +50,12 @@ The left column deliberately uses Academic Pages' original author-profile layout
 
 New files in these content folders are copied into the Jekyll workspace, and the associated archives update automatically. The initial theme remains pinned to a fixed upstream commit; the site is built from our content overlay.
 
+### Replacing the portrait later
+
+The grey silhouette is the original Academic Pages `images/profile.png`. It is a placeholder, not your portrait.
+
+When you have a photograph, save it as `images/portrait.jpg` in this repository, change `author.avatar` to `"portrait.jpg"` in `_config_selfres.yml`, and run `docker compose restart selfpage`. The build copies user-provided images over the upstream assets without deleting the originals.
+
 ## Releases and safety
 
 GitHub Actions checks that pages, CSS, navigation links, ORCID, and the documented preprint build correctly. It does not publish from this development branch; a deployment is intended only after reviewed changes reach `main`.

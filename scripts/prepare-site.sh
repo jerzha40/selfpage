@@ -32,6 +32,10 @@ rsync -a "$SOURCE/_talks/" "$DEST/_talks/"
 rsync -a "$SOURCE/_teaching/" "$DEST/_teaching/"
 rsync -a "$SOURCE/_posts/" "$DEST/_posts/"
 rsync -a "$SOURCE/_drafts/" "$DEST/_drafts/"
+# Optional user images, including the future portrait, layer over theme assets.
+if [ -d "$SOURCE/images" ]; then
+  rsync -a "$SOURCE/images/" "$DEST/images/"
+fi
 cp "$SOURCE/_data/navigation.yml" "$DEST/_data/navigation.yml"
 cp "$SOURCE/_config_selfres.yml" "$DEST/_config_selfres.yml"
 cp "$SOURCE/_config_docker.yml" "$DEST/_config_docker.yml"
@@ -67,6 +71,9 @@ case "$MODE" in
         rsync -a --checksum --delete "$SOURCE/_teaching/" "$DEST/_teaching/"
         rsync -a --checksum --delete "$SOURCE/_posts/" "$DEST/_posts/"
         rsync -a --checksum --delete "$SOURCE/_drafts/" "$DEST/_drafts/"
+        if [ -d "$SOURCE/images" ]; then
+          rsync -a --checksum "$SOURCE/images/" "$DEST/images/"
+        fi
         rsync -a --checksum "$SOURCE/_data/navigation.yml" "$DEST/_data/navigation.yml"
         # Configuration is loaded by Jekyll only at server start.
         # To see config edits, use: docker compose restart selfpage
