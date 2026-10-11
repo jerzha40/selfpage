@@ -6,11 +6,13 @@ Standard library only; runs after the Jekyll build in GitHub Actions.
 
 import re
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 root = Path(sys.argv[1] if len(sys.argv) > 1 else "_site")
 routes = (
     "index.html",
+    "sitemap.xml",
     "research/index.html",
     "publications/index.html",
     "publication/differential-informed-auto-encoder/index.html",
@@ -78,6 +80,22 @@ if "http://0.0.0.0:4000/" in home:
     raise SystemExit("Internal links incorrectly use Docker's bind address.")
 if 'href="/selfpage/research/"' not in home:
     raise SystemExit("Local/navigation links are not host-independent.")
+
+
+# Search Console needs a real, publicly addressable sitemap, not just a
+# successful Jekyll build. Fail before deployment if the sitemap is broken.
+sitemap = ET.parse(root / "sitemap.xml").getroot()
+namespace = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+locs = [
+    node.text.strip()
+    for node in sitemap.iter(f"{namespace}loc")
+    if node.text and node.text.strip()
+]
+homepage = "https://jerzha40.github.io/selfpage/"
+if homepage not in locs:
+    raise SystemExit("Sitemap does not list the canonical Pantheon homepage.")
+if not locs or any(not url.startswith(homepage) for url in locs):
+    raise SystemExit("Sitemap contains empty or noncanonical URLs.")
 
 
 print(
