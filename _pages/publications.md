@@ -1,14 +1,17 @@
 ---
 layout: archive
 permalink: /publications/
-title: "Preprints"
+title: "Publications and Preprints"
 author_profile: true
 ---
 
-## 2024
+Research outputs appear below as they are documented. **Preprints are not automatically peer-reviewed publications.**
 
-**Jinrui Zhang.** *Differential Informed Auto-Encoder.* arXiv preprint, arXiv:2410.18593 (2024).
-
-[Read on arXiv](https://arxiv.org/abs/2410.18593) · [DOI](https://doi.org/10.48550/arXiv.2410.18593)
-
-This section distinguishes public preprints from peer-reviewed publications.
+{% if site.publications.size > 0 %}
+  {% assign entries = site.publications | sort: "date" | reverse %}
+  {% for post in entries %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% else %}
+  *No publications or preprints have been added yet.*
+{% endif %}
