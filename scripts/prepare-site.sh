@@ -29,6 +29,8 @@ rsync -a "$SOURCE/_portfolio/" "$DEST/_portfolio/"
 cp "$SOURCE/_data/navigation.yml" "$DEST/_data/navigation.yml"
 cp "$SOURCE/_config_selfres.yml" "$DEST/_config_selfres.yml"
 cp "$SOURCE/_config_docker.yml" "$DEST/_config_docker.yml"
+# Avoid absolute theme URLs in preview: the repo is a GitHub Pages project site.
+cp "$SOURCE/overrides/_includes/head.html" "$DEST/_includes/head.html"
 
 # The 2025 standalone index.html exists only in the overlay repository's history.
 # Root home is generated from _pages/about.md with permalink: /.

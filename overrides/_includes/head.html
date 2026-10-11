@@ -1,0 +1,16 @@
+{% include base_path %}
+
+<meta charset="utf-8">
+{% include seo.html %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="alternate" type="application/atom+xml"
+      href="{{ '/feed.xml' | relative_url }}" title="{{ site.title }} Feed">
+
+<script>
+  document.documentElement.className =
+    document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- Resolve the stylesheet from Jekyll's baseurl; works in /selfpage/ locally and on Pages. -->
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
