@@ -11,6 +11,10 @@ routes = (
     "index.html",
     "research/index.html",
     "publications/index.html",
+    "publication/differential-informed-auto-encoder/index.html",
+    "year-archive/index.html",
+    "talks/index.html",
+    "teaching/index.html",
     "portfolio/index.html",
     "portfolio/firstattempt/index.html",
     "portfolio/scattering-lab/index.html",
@@ -29,7 +33,7 @@ if len(css) < 1000:
 
 home = (root / "index.html").read_text(encoding="utf-8")
 preprints = (root / "publications/index.html").read_text(encoding="utf-8")
-for route in ("research", "publications", "portfolio", "story", "cv", "contact"):
+for route in ("research", "publications", "portfolio", "year-archive", "talks", "teaching", "story", "cv", "contact"):
     if f"/selfpage/{route}/" not in home:
         raise SystemExit(f"Missing navigation URL for {route}.")
 if "/selfpage/assets/css/main.css" not in home:
@@ -44,4 +48,4 @@ for placeholder in ("Red Brick University", "yourorcidurl", "none@example.org"):
 if "author__avatar" in home:
     raise SystemExit("Unwanted/unverified avatar is still rendered.")
 
-print("Pantheon site smoke check passed: 9 pages, CSS, routes, ORCID, preprint.")
+print(f"Pantheon site smoke check passed: {len(routes)-1} pages, CSS, routes, ORCID, preprint.")
