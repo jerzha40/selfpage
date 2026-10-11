@@ -1,6 +1,6 @@
 # Overrides the pinned upstream Academic Pages _config.yml.
 locale: "en-US"
-site_theme: "air"
+site_theme: "default" # Academic Pages classic light palette, matching upstream demo
 title: "Jinrui Zhang"
 title_separator: "-"
 name: "Jinrui Zhang"
