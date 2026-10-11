@@ -36,6 +36,8 @@ cp "$SOURCE/_data/navigation.yml" "$DEST/_data/navigation.yml"
 cp "$SOURCE/_config_selfres.yml" "$DEST/_config_selfres.yml"
 cp "$SOURCE/_config_docker.yml" "$DEST/_config_docker.yml"
 # Avoid absolute theme URLs in preview: the repo is a GitHub Pages project site.
+# Use host-independent internal URLs, not the server's 0.0.0.0 bind address.
+cp "$SOURCE/overrides/_includes/base_path" "$DEST/_includes/base_path"
 cp "$SOURCE/overrides/_includes/head.html" "$DEST/_includes/head.html"
 cp "$SOURCE/overrides/_includes/author-profile.html" "$DEST/_includes/author-profile.html"
 

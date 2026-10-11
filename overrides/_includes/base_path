@@ -1,0 +1,7 @@
+{% comment %}
+Internal site links must be host-independent. Jekyll serve can assign
+site.url to http://0.0.0.0:4000 when bound to all interfaces in Docker;
+that address is never a browsable hostname on Windows.
+The same /selfpage/ prefix works locally and on GitHub Pages.
+{% endcomment %}
+{% assign base_path = site.baseurl | default: "" %}
