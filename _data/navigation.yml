@@ -1,0 +1,12 @@
+# Academic Pages / Minimal Mistakes primary menu.
+main:
+  - title: "Research"
+    url: /research/
+  - title: "Pantheon"
+    url: /portfolio/
+  - title: "My Story"
+    url: /story/
+  - title: "CV"
+    url: /cv/
+  - title: "Contact"
+    url: /contact/
