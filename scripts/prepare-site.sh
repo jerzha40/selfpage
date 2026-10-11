@@ -50,10 +50,12 @@ case "$MODE" in
     # the generated workspace. Refresh browser when content changes.
     (
       while sleep 2; do
-        rsync -a --delete "$SOURCE/_pages/" "$DEST/_pages/"
-        rsync -a --delete "$SOURCE/_portfolio/" "$DEST/_portfolio/"
-        cp -u "$SOURCE/_data/navigation.yml" "$DEST/_data/navigation.yml"
-        cp -u "$SOURCE/_config_selfres.yml" "$DEST/_config_selfres.yml"
+        # Compare file contents, not only timestamps: reliable with Docker Desktop / NTFS.
+        rsync -a --checksum --delete "$SOURCE/_pages/" "$DEST/_pages/"
+        rsync -a --checksum --delete "$SOURCE/_portfolio/" "$DEST/_portfolio/"
+        rsync -a --checksum "$SOURCE/_data/navigation.yml" "$DEST/_data/navigation.yml"
+        # Configuration is loaded by Jekyll only at server start.
+        # To see config edits, use: docker compose restart selfpage
       done
     ) &
     exec bundle exec jekyll serve --host 0.0.0.0 --port 4000 \

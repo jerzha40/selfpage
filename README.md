@@ -1,49 +1,48 @@
-# SelfRes / Jinrui Zhang — academic website
+# SelfRes / Pantheon — academic website
 
-**Branch:** `rebuild/academic-pages-v1` (work in progress, not yet published).
+A compact personal academic website using the [Academic Pages](https://github.com/academicpages/academicpages.github.io) Jekyll theme, plus a small, curated work gallery.
 
-One public website, including the academic homepage, Research, Pantheon (work gallery), My Story, CV, and Contact. The project is managed as a submodule of `jerzha40/uni_escuela`.
+One website, six sections: Home, Research, Preprints, Pantheon, My Story, CV, and Contact. The theme is pinned at a fixed upstream revision and is built separately from our Markdown content. The original webpage remains on `main` while this branch is being developed.
 
-Built using the open-source [Academic Pages](https://github.com/academicpages/academicpages.github.io) template. Rather than copy its source into this repository, the Docker and GitHub Actions builds download a **pinned revision** of the template, overlay our Markdown and site configuration, and build a static Jekyll website.
+## Preview locally (Docker Desktop)
 
-## Local preview with Docker Desktop
-
-From this folder in PowerShell:
+Run in the `selfpage` folder from PowerShell:
 
 ```powershell
-docker compose up --build
+docker compose up -d --build
 ```
 
-Then open **http://localhost:4000/selfpage/**.
+Open **http://localhost:4000/selfpage/**.
 
-Ruby, Bundler and Jekyll live inside the Docker image; no host Ruby installation is required. The repository is mounted read-only, and generated files remain inside the container.
+The service **runs in the background**. You can close the terminal or keep working in VS Code.
 
-Edit `_pages/`, `_portfolio/`, and `_data/navigation.yml` in VS Code. Jekyll checks for changes; refresh your browser. If you change `_config_selfres.yml` or template infrastructure, restart with `docker compose restart`, or rebuild the image when you change the Dockerfile.
+- Edit `_pages/*.md`, `_portfolio/*.md`, or `_data/navigation.yml`: changes are synchronized and Jekyll rebuilds, normally within a few seconds; refresh the browser.
+- Edit `_config_selfres.yml`, `_config_docker.yml`, or files under `overrides/`: run `docker compose restart selfpage`. The process must reload configuration and the template overlay.
+- Edit `Dockerfile`, `Gemfile` upstream ref, or `scripts/prepare-site.sh`: run `docker compose up -d --build --force-recreate` to rebuild the container.
+- View runtime output without staying attached: `docker compose logs -f --tail=50 selfpage`. Press Ctrl+C to stop viewing the logs **without stopping** the website.
+- Check status: `docker compose ps`. When you deliberately want to stop the website, run `docker compose stop`; `docker compose down` also removes the container/network.
 
-Stop with Ctrl+C and optionally run `docker compose down`.
+**You do not need `docker compose down` after every edit.** Ruby/Jekyll dependencies and the generated `_site` directory stay in Docker, not your Windows system.
+
+## Pages and sources
+
+| Content | Location |
+| --- | --- |
+| Home | `_pages/about.md` |
+| Research | `_pages/research.md` |
+| Preprints | `_pages/publications.md` |
+| Pantheon gallery | `_pages/portfolio.html` |
+| Exhibits | `_portfolio/*.md` |
+| My Story | `_pages/story.md` |
+| CV | `_pages/cv.md` |
+| Contact | `_pages/contact.md` |
+| Public profile | `_config_selfres.yml` |
+| Menu | `_data/navigation.yml` |
+
+The public site intentionally includes **only authored and reviewed content**. We do not automatically publish `aUnification`, the private parts of `uni_escuela`, or repository submodules.
 
 ## GitHub Actions
 
-The workflow `.github/workflows/site.yml` checks site builds on this development branch. A deployment to GitHub Pages is only attempted **after** this branch is merged into `main` and GitHub Pages is configured to use GitHub Actions.
+Pushes on this development branch run a site build and a route/content smoke test. Deployment is gated on pushes to `main` after GitHub Pages is configured to use Actions. No public deployment has been requested from this branch.
 
-## Source of truth
-
-- `_pages/about.md`: homepage
-- `_pages/research.md`: research directions
-- `_pages/story.md`: personal essay
-- `_pages/cv.md`: compact, carefully reviewed CV
-- `_pages/contact.md`: contact
-- `_portfolio/*.md`: curated project exhibits
-- `_config_selfres.yml`: public identity and site deployment settings
-
-The previous standalone `index.html` is retained in the `main` branch and its Git history, but intentionally removed from this rebuild branch. The new homepage is generated from `_pages/about.md`.
-
-See [THEME_CREDITS.md](THEME_CREDITS.md).
-
-## Build behavior
-
-The pinned upstream theme supplies layout and Sass, but public site content comes only from this repository's Markdown files. A tiny `overrides/_includes/head.html` makes stylesheet paths relative to Jekyll's `baseurl` so the same link works in local Docker and GitHub Pages.
-
-The legacy `main` branch is unchanged. The academic index `uni_escuela` already references `selfpage` as a Git submodule; its older submodule location can be reorganized later, independently.
-
-Before publishing: verify links and CSS on mobile/desktop, review research claims, inspect public admission records for personal details, and ensure every portfolio status accurately reflects a tested release.
+[Site and template credits](THEME_CREDITS.md)
