@@ -38,4 +38,12 @@ The workflow `.github/workflows/site.yml` checks site builds on this development
 
 The previous standalone `index.html` is retained in the `main` branch and its Git history, but intentionally removed from this rebuild branch. The new homepage is generated from `_pages/about.md`.
 
-See [THEME_CREDITS.md](THEME_CREDITS.md) and [docs/REBUILD.md](docs/REBUILD.md).
+See [THEME_CREDITS.md](THEME_CREDITS.md).
+
+## Build behavior
+
+The pinned upstream theme supplies layout and Sass, but public site content comes only from this repository's Markdown files. A tiny `overrides/_includes/head.html` makes stylesheet paths relative to Jekyll's `baseurl` so the same link works in local Docker and GitHub Pages.
+
+The legacy `main` branch is unchanged. The academic index `uni_escuela` already references `selfpage` as a Git submodule; its older submodule location can be reorganized later, independently.
+
+Before publishing: verify links and CSS on mobile/desktop, review research claims, inspect public admission records for personal details, and ensure every portfolio status accurately reflects a tested release.

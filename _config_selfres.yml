@@ -13,3 +13,12 @@ author:
   bio: "Mathematics graduate student at Jilin University. Need nerves of tungsten."
   location: "Jilin University"
   email: "jerryzhang40@gmail.com"
+  github: "jerzha40"
+  # Explicitly clear the Academic Pages demo author's inherited fields.
+  avatar: null
+  employer: null
+  googlescholar: null
+  orcid: null
+  pubmed: null
+  bluesky: null
+
