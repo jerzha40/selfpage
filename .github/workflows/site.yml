@@ -48,6 +48,9 @@ jobs:
           bundle _2.3.26_ install
           bundle exec jekyll build --strict_front_matter --config _config.yml,_config_selfres.yml
 
+      - name: Validate generated routes, assets and public identity
+        run: python3 overlay/scripts/check-site.py build-site/_site
+
       - name: Upload pages artifact
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         uses: actions/upload-pages-artifact@v3
