@@ -22,6 +22,7 @@ routes = (
     "cv/index.html",
     "contact/index.html",
     "assets/css/main.css",
+    "images/profile.png",
 )
 missing = [p for p in routes if not (root / p).is_file()]
 if missing:
@@ -45,7 +46,16 @@ if "2410.18593" not in preprints:
 for placeholder in ("Red Brick University", "yourorcidurl", "none@example.org"):
     if placeholder in home:
         raise SystemExit(f"Upstream placeholder still visible: {placeholder}")
-if "author__avatar" in home:
-    raise SystemExit("Unwanted/unverified avatar is still rendered.")
+if 'class="author__avatar"' not in home:
+    raise SystemExit("Academic Pages avatar slot is missing.")
+if '/selfpage/images/profile.png' not in home:
+    raise SystemExit("Avatar must use the bundled, host-independent placeholder image.")
+if 'Google Scholar' not in home or '(to add)' not in home:
+    raise SystemExit("Future social profile slots should stay visible but unlinked.")
+if 'http://0.0.0.0:4000/' in home:
+    raise SystemExit("Internal links incorrectly use Docker's bind address.")
+if 'href="/selfpage/research/"' not in home:
+    raise SystemExit("Local/navigation links are not host-independent.")
+
 
 print(f"Pantheon site smoke check passed: {len(routes)-1} pages, CSS, routes, ORCID, preprint.")
