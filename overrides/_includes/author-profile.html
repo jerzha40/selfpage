@@ -1,0 +1,31 @@
+{% assign author = site.author %}
+<div itemscope itemtype="https://schema.org/Person">
+  {% comment %}
+    This deliberately omits Academic Pages' demo avatar: no placeholder or broken photo.
+    Only accounts explicitly recorded in _config_selfres.yml are displayed.
+  {% endcomment %}
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">{{ author.name | escape }}</h3>
+    {% if author.bio %}
+      <p class="author__bio">{{ author.bio | escape }}</p>
+    {% endif %}
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse" aria-label="Show contact links">Links</button>
+    <ul class="author__urls social-icons">
+      {% if author.location %}
+        <li class="author__desktop"><i class="fas fa-fw fa-location-dot" aria-hidden="true"></i> {{ author.location | escape }}</li>
+      {% endif %}
+      {% if author.email %}
+        <li><a href="mailto:{{ author.email | escape }}"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email</a></li>
+      {% endif %}
+      {% if author.orcid %}
+        <li><a href="{{ author.orcid | escape }}" rel="me"><i class="ai ai-orcid ai-fw" aria-hidden="true"></i> ORCID</a></li>
+      {% endif %}
+      {% if author.github %}
+        <li><a href="https://github.com/{{ author.github | escape }}" rel="me"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
