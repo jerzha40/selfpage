@@ -33,6 +33,8 @@ rsync -a "$SOURCE/_teaching/" "$DEST/_teaching/"
 rsync -a "$SOURCE/_posts/" "$DEST/_posts/"
 rsync -a "$SOURCE/_drafts/" "$DEST/_drafts/"
 # Publish only our attachments; never inherit upstream sample paper PDFs.
+# The theme includes files/paper1.pdf and paper2.pdf, so reset the directory.
+rm -rf "$DEST/files"
 mkdir -p "$DEST/files"
 rsync -a "$SOURCE/files/" "$DEST/files/"
 # Optional user images, including the future portrait, layer over theme assets.
