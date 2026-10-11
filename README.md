@@ -22,6 +22,15 @@ Open **http://localhost:4000/selfpage/**.
 
 The standard Academic Pages sections remain available, including empty ones.
 
+### Personal profile sidebar
+
+The left column deliberately uses Academic Pages' original author-profile layout:
+- The theme's **neutral silhouette** (`images/profile.png`) is displayed until you supply a photo; the bundled asset is not a photograph of the site owner.
+- Existing, verified links (GitHub, ORCID, personal Gmail) are clickable.
+- Future profile slots (Google Scholar, LinkedIn, arXiv author profile, Bluesky) remain visible as **(to add)** and are deliberately NOT clickable.
+- Update `author` and `profile_links_to_complete` in `_config_selfres.yml` when you create a new account. Then restart `docker compose restart selfpage`; Jekyll only loads site config on startup.
+
+
 | Public page | Edit or add files |
 | --- | --- |
 | Home | `_pages/about.md` |
