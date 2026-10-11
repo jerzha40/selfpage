@@ -3,8 +3,9 @@
 
 Standard library only; runs after the Jekyll build in GitHub Actions.
 """
-from pathlib import Path
+
 import sys
+from pathlib import Path
 
 root = Path(sys.argv[1] if len(sys.argv) > 1 else "_site")
 routes = (
@@ -34,7 +35,17 @@ if len(css) < 1000:
 
 home = (root / "index.html").read_text(encoding="utf-8")
 preprints = (root / "publications/index.html").read_text(encoding="utf-8")
-for route in ("research", "publications", "portfolio", "year-archive", "talks", "teaching", "story", "cv", "contact"):
+for route in (
+    "research",
+    "publications",
+    "portfolio",
+    "year-archive",
+    "talks",
+    "teaching",
+    "story",
+    "cv",
+    "contact",
+):
     if f"/selfpage/{route}/" not in home:
         raise SystemExit(f"Missing navigation URL for {route}.")
 if "/selfpage/assets/css/main.css" not in home:
@@ -48,14 +59,16 @@ for placeholder in ("Red Brick University", "yourorcidurl", "none@example.org"):
         raise SystemExit(f"Upstream placeholder still visible: {placeholder}")
 if 'class="author__avatar"' not in home:
     raise SystemExit("Academic Pages avatar slot is missing.")
-if '/selfpage/images/profile.png' not in home:
+if "/selfpage/images/profile.png" not in home:
     raise SystemExit("Avatar must use the bundled, host-independent placeholder image.")
-if 'Google Scholar' not in home or '(to add)' not in home:
+if "Google Scholar" not in home or "(to add)" not in home:
     raise SystemExit("Future social profile slots should stay visible but unlinked.")
-if 'http://0.0.0.0:4000/' in home:
+if "http://0.0.0.0:4000/" in home:
     raise SystemExit("Internal links incorrectly use Docker's bind address.")
 if 'href="/selfpage/research/"' not in home:
     raise SystemExit("Local/navigation links are not host-independent.")
 
 
-print(f"Pantheon site smoke check passed: {len(routes)-1} pages, CSS, routes, ORCID, preprint.")
+print(
+    f"Pantheon site smoke check passed: {len(routes) - 1} pages, CSS, routes, ORCID, preprint."
+)

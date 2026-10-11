@@ -11,25 +11,21 @@ repository: "jerzha40/selfpage"
 author:
   name: "Jinrui Zhang"
   bio: "Mathematics graduate student at Jilin University. Need nerves of tungsten."
-  location: "Jilin University"
+  location: "Earth"
   email: "jerryzhang40@gmail.com"
   github: "jerzha40"
   # Explicitly clear the Academic Pages demo author's inherited fields.
   avatar: "profile.png" # Bundled Academic Pages neutral silhouette; replace when ready
-  employer: false # Disable demo profile link/affiliation from inherited theme config
-  googlescholar: false # Disable demo profile link/affiliation from inherited theme config
+  employer: "Jilin University" # Disable demo profile link/affiliation from inherited theme config
+  googlescholar: https://scholar.google.com/citations?user=QpBRjl8AAAAJ&hl=en # Disable demo profile link/affiliation from inherited theme config
   orcid: "https://orcid.org/0009-0003-9957-2569"
   pubmed: false # Disable demo profile link/affiliation from inherited theme config
-  bluesky: false # Disable demo profile link/affiliation from inherited theme config
+  bluesky: https://bsky.app/profile/jerzha40.bsky.social # Disable demo profile link/affiliation from inherited theme config
   arxiv: null # Add a verified arXiv author page URL later
-  linkedin: null # Add your actual LinkedIn profile slug later
+  linkedin: https://www.linkedin.com/in/jinrui-zhang-707025341/ # Add your actual LinkedIn profile slug later
   researchgate: null
 
 # These are visible, NONCLICKABLE reminders in the sidebar until accounts are connected.
 # Remove an item here after its actual address is added to author.* above.
 profile_links_to_complete:
-  - "Google Scholar"
-  - "LinkedIn"
   - "arXiv author profile"
-  - "Bluesky"
-
