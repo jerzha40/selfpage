@@ -4,7 +4,7 @@ title: "Curriculum Vitae"
 author_profile: true
 ---
 
-*A concise public CV is being revised. This page currently lists only confirmed milestones; a downloadable PDF will be added after review.*
+_A concise public CV is being revised. This page currently lists only confirmed milestones; a downloadable PDF will be added after review._
 
 ## Education
 

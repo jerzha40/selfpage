@@ -4,7 +4,7 @@ title: "Jinrui Zhang"
 author_profile: true
 ---
 
-*Need nerves of tungsten.*
+_Need nerves of tungsten._
 
 I am a graduate student in mathematics at **Jilin University**. I am interested in numerical inverse problems, wave scattering, and stochastic dynamics.
 
