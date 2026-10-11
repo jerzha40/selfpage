@@ -18,7 +18,7 @@ docker compose up --build
 
 Open `http://localhost:4000/selfpage/`. Generated site files are produced in the container, not copied to your Windows project folder.
 
-The original `index.html` is excluded from the generated website. It is unchanged on `main`.
+The original `index.html` has been removed from this development branch; it remains intact on `main` and in the repository history. If you modified it locally, stash those edits before pulling this branch.
 
 ## Build approach
 

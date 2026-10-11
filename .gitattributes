@@ -1,0 +1,2 @@
+# Ensure Linux shell scripts work in Windows checkouts and Docker build contexts.
+*.sh text eol=lf

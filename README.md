@@ -36,6 +36,6 @@ The workflow `.github/workflows/site.yml` checks site builds on this development
 - `_portfolio/*.md`: curated project exhibits
 - `_config_selfres.yml`: public identity and site deployment settings
 
-`index.html` is the **old page** and is deliberately ignored by the new build; it remains for comparison on this development branch.
+The previous standalone `index.html` is retained in the `main` branch and its Git history, but intentionally removed from this rebuild branch. The new homepage is generated from `_pages/about.md`.
 
 See [THEME_CREDITS.md](THEME_CREDITS.md) and [docs/REBUILD.md](docs/REBUILD.md).

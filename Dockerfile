@@ -20,7 +20,10 @@ WORKDIR /opt/academic-pages
 RUN gem install bundler -v 2.3.26 --no-document && bundle _2.3.26_ install --jobs 4 --retry 3
 
 COPY scripts/prepare-site.sh /usr/local/bin/prepare-selfres-site
-RUN chmod +x /usr/local/bin/prepare-selfres-site \
+# Docker Desktop / Git for Windows can check out *.sh with CRLF line endings.
+# Normalize inside the Linux image so the script interpreter can open it.
+RUN sed -i 's/\r$//' /usr/local/bin/prepare-selfres-site \
+    && chmod +x /usr/local/bin/prepare-selfres-site \
     && useradd --create-home --uid 10001 selfres \
     && mkdir -p /worksite \
     && chown -R selfres:selfres /worksite
@@ -28,5 +31,5 @@ RUN chmod +x /usr/local/bin/prepare-selfres-site \
 USER selfres
 WORKDIR /worksite
 EXPOSE 4000
-ENTRYPOINT ["/usr/local/bin/prepare-selfres-site"]
+ENTRYPOINT ["/bin/sh", "/usr/local/bin/prepare-selfres-site"]
 CMD ["serve"]
