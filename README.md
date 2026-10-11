@@ -2,7 +2,7 @@
 
 A compact personal academic website using the [Academic Pages](https://github.com/academicpages/academicpages.github.io) Jekyll theme, plus a small, curated work gallery.
 
-One website, six sections: Home, Research, Preprints, Pantheon, My Story, CV, and Contact. The theme is pinned at a fixed upstream revision and is built separately from our Markdown content. The original webpage remains on `main` while this branch is being developed.
+One website, seven sections: Home, Research, Preprints, Pantheon, My Story, CV, and Contact. The theme is pinned at a fixed upstream revision and is built separately from our Markdown content. The original webpage remains on `main` while this branch is being developed.
 
 ## Preview locally (Docker Desktop)
 
