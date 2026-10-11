@@ -65,8 +65,10 @@ if 'href="https://bsky.app/profile/jerzha40.bsky.social"' not in home:
     raise SystemExit("Bluesky profile URL is missing or malformed.")
 if 'href="https://www.linkedin.com/in/jinrui-zhang-707025341"' not in home:
     raise SystemExit("LinkedIn profile URL is missing or malformed.")
-if "Google Scholar" not in home or "(to add)" not in home:
-    raise SystemExit("Future social profile slots should stay visible but unlinked.")
+if "arXiv author profile" not in home or "(to add)" not in home:
+    raise SystemExit("Unconfigured arXiv author profile slot should remain a nonlinked placeholder.")
+if 'href="https://scholar.google.com/citations?user=QpBRjl8AAAAJ' not in home:
+    raise SystemExit("Configured Google Scholar profile link is missing.")
 if "http://0.0.0.0:4000/" in home:
     raise SystemExit("Internal links incorrectly use Docker's bind address.")
 if 'href="/selfpage/research/"' not in home:
