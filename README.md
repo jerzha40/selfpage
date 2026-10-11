@@ -1,6 +1,6 @@
-# SelfRes / Pantheon — academic website
+# SelfRes / Portfolio — academic website
 
-A personal academic website using the [Academic Pages](https://github.com/academicpages/academicpages.github.io) Jekyll template. **One website; expandable academic sections; a curated Pantheon gallery.** This is a development branch; the original site remains intact on `main`.
+A personal academic website using the [Academic Pages](https://github.com/academicpages/academicpages.github.io) Jekyll template. **One website; expandable academic sections; a curated portfolio of projects.** This is a development branch; the original site remains intact on `main`.
 
 ## Preview in Docker (no Ruby installed on Windows)
 
@@ -28,7 +28,7 @@ The left column deliberately uses Academic Pages' original author-profile layout
 
 - The theme's **neutral silhouette** (`images/profile.png`) is displayed until you supply a photo; the bundled asset is not a photograph of the site owner.
 - Existing, verified links (GitHub, ORCID, personal Gmail) are clickable.
-- Future profile slots (Google Scholar, LinkedIn, arXiv author profile, Bluesky) remain visible as **(to add)** and are deliberately NOT clickable.
+- Only unconfigured profile slots remain visible as **(to add)** and are deliberately NOT clickable. Verified account links appear normally.
 - Update `author` and `profile_links_to_complete` in `_config_selfres.yml` when you create a new account. Then restart `docker compose restart selfpage`; Jekyll only loads site config on startup.
 
 | Public page               | Edit or add files                                        |
@@ -36,7 +36,7 @@ The left column deliberately uses Academic Pages' original author-profile layout
 | Home                      | `_pages/about.md`                                        |
 | Research                  | `_pages/research.md`                                     |
 | Publications              | `_publications/*.md` (archive: `_pages/publications.md`) |
-| Pantheon                  | `_portfolio/*.md` (archive: `_pages/portfolio.html`)     |
+| Projects                  | `_portfolio/*.md` (archive: `_pages/portfolio.html`)     |
 | Blog Posts / Year Archive | `_posts/YYYY-MM-DD-title.md`                             |
 | Talks                     | `_talks/*.md`                                            |
 | Teaching                  | `_teaching/*.md`                                         |
@@ -58,8 +58,16 @@ When you have a photograph, save it as `images/portrait.jpg` in this repository,
 
 ## Releases and safety
 
-GitHub Actions checks that pages, CSS, navigation links, ORCID, and the documented preprint build correctly. It does not publish from this development branch; a deployment is intended only after reviewed changes reach `main`.
+GitHub Actions validates the Jekyll build, generated pages, canonical URLs, sitemap, CSS, identity links, and the documented preprint. **Pushes to `rebuild/academic-pages-v1` automatically deploy this public GitHub Pages site** after checks pass. The old 2025 website remains on `main`; this build does not publish from `main`.
 
 Only public, verified material belongs here. Never automatically expose submodules, private `aUnification` projects, credentials, or student records.
 
 [Theme and AI-assistance credits](THEME_CREDITS.md).
+
+## Public site structure
+
+- Navigation label: **Projects**; archive page title: **Portfolio**.
+- Project permalinks remain under `/selfpage/portfolio/`. This is intentional to preserve public URLs and Google indexing.
+- Files in `_portfolio/` are project records. Do not rename the Jekyll collection or its Liquid references.
+- `files/` is reserved for author-approved attachments, e.g. a future CV PDF. Upstream template sample PDFs are **not** published.
+- The contact subject marker is `PORTFOLIOLETTER`; anyone using the older `PANTHEONLETTER` marker can still be found via Gmail search for historical correspondence.

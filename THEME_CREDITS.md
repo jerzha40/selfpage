@@ -6,4 +6,4 @@ The theme source is fetched at a **pinned commit** during builds, rather than be
 
 Website content and research claims are maintained by Jinrui Zhang. Initial site configuration and content organization were prepared with assistance from OpenAI ChatGPT. Software/tool assistance is distinct from authorship of mathematical research.
 
-The original standalone HTML page remains in the previous `main` history. This rebuild branch is under development and should be reviewed before publication.
+The original standalone HTML page remains on the legacy `main` branch and in Git history. The reviewed `rebuild/academic-pages-v1` branch is the public GitHub Pages publishing source; individual research and portfolio entries must still be reviewed before release.

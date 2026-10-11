@@ -38,6 +38,14 @@ if len(css) < 1000:
 
 home = (root / "index.html").read_text(encoding="utf-8")
 preprints = (root / "publications/index.html").read_text(encoding="utf-8")
+portfolio = (root / "portfolio/index.html").read_text(encoding="utf-8")
+if "<title>Portfolio" not in portfolio:
+    raise SystemExit("Project archive does not display the Portfolio title.")
+if "Pantheon" in home or "Pantheon" in portfolio:
+    raise SystemExit("Old Pantheon branding remains on public pages.")
+for filename in ("paper1.pdf", "paper2.pdf"):
+    if (root / "files" / filename).exists():
+        raise SystemExit(f"Upstream demo file leaked into public site: {filename}")
 for route in (
     "research",
     "publications",
@@ -93,11 +101,13 @@ locs = [
 ]
 homepage = "https://jerzha40.github.io/selfpage/"
 if homepage not in locs:
-    raise SystemExit("Sitemap does not list the canonical Pantheon homepage.")
+    raise SystemExit("Sitemap does not list the canonical SelfRes homepage.")
 if not locs or any(not url.startswith(homepage) for url in locs):
     raise SystemExit("Sitemap contains empty or noncanonical URLs.")
+if any("/files/paper1.pdf" in url or "/files/paper2.pdf" in url for url in locs):
+    raise SystemExit("Upstream demo PDFs must not appear in the public sitemap.")
 
 
 print(
-    f"Pantheon site smoke check passed: {len(routes) - 1} pages, CSS, routes, ORCID, preprint."
+    f"Portfolio site smoke check passed: {len(routes) - 1} pages, CSS, routes, ORCID, preprint."
 )

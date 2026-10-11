@@ -32,6 +32,9 @@ rsync -a "$SOURCE/_talks/" "$DEST/_talks/"
 rsync -a "$SOURCE/_teaching/" "$DEST/_teaching/"
 rsync -a "$SOURCE/_posts/" "$DEST/_posts/"
 rsync -a "$SOURCE/_drafts/" "$DEST/_drafts/"
+# Publish only our attachments; never inherit upstream sample paper PDFs.
+mkdir -p "$DEST/files"
+rsync -a "$SOURCE/files/" "$DEST/files/"
 # Optional user images, including the future portrait, layer over theme assets.
 if [ -d "$SOURCE/images" ]; then
 	rsync -a "$SOURCE/images/" "$DEST/images/"

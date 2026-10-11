@@ -8,7 +8,7 @@ These are **editing templates**, deliberately stored outside Jekyll's publishing
 | Publication or preprint | `_publications/YYYY-MM-DD-title.md` | Publications              |
 | Talk or presentation    | `_talks/YYYY-MM-DD-title.md`        | Talks                     |
 | Teaching experience     | `_teaching/YYYY-MM-DD-title.md`     | Teaching                  |
-| Curated project         | `_portfolio/YYYY-MM-DD-title.md`    | Pantheon                  |
+| Curated project         | `_portfolio/YYYY-MM-DD-title.md`    | Projects                  |
 
 Examples in these templates are not claims about the author. Delete any fields that do not apply; do not publish invented achievements.
 

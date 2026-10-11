@@ -18,6 +18,6 @@ Numerical inverse problems; acoustic scattering; computational PDEs; stochastic 
 
 ## Selected work
 
-See the [Pantheon]({{ '/portfolio/' | relative_url }}) for evidence, code, and current project status.
+See the [Portfolio]({{ '/portfolio/' | relative_url }}) for evidence, code, and current project status.
 
 For research correspondence: [Contact]({{ '/contact/' | relative_url }}).

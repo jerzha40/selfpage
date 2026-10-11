@@ -21,7 +21,7 @@ I am now working to turn selected experiments into **reproducible, documented wo
 
 - [Research]({{ '/research/' | relative_url }}) — the problems I am working on
 - [Publications]({{ '/publications/' | relative_url }}) — publications and preprints
-- [Pantheon]({{ '/portfolio/' | relative_url }}) — selected experiments and finished works
+- [Projects]({{ '/portfolio/' | relative_url }}) — a portfolio of selected experiments and working software
 - [Blog Posts]({{ '/year-archive/' | relative_url }}) — notes and project updates
 - [Talks]({{ '/talks/' | relative_url }}) and [Teaching]({{ '/teaching/' | relative_url }}) — future academic activity records
 - [My Story]({{ '/story/' | relative_url }}) — how the work began
