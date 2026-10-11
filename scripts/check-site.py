@@ -59,8 +59,12 @@ for placeholder in ("Red Brick University", "yourorcidurl", "none@example.org"):
         raise SystemExit(f"Upstream placeholder still visible: {placeholder}")
 if 'class="author__avatar"' not in home:
     raise SystemExit("Academic Pages avatar slot is missing.")
-if "/selfpage/images/profile.png" not in home:
-    raise SystemExit("Avatar must use the bundled, host-independent placeholder image.")
+if 'src="/selfpage/images/profile.png"' not in home:
+    raise SystemExit("Avatar src must exactly match the bundled image URL; check Liquid whitespace.")
+if 'href="https://bsky.app/profile/jerzha40.bsky.social"' not in home:
+    raise SystemExit("Bluesky profile URL is missing or malformed.")
+if 'href="https://www.linkedin.com/in/jinrui-zhang-707025341"' not in home:
+    raise SystemExit("LinkedIn profile URL is missing or malformed.")
 if "Google Scholar" not in home or "(to add)" not in home:
     raise SystemExit("Future social profile slots should stay visible but unlinked.")
 if "http://0.0.0.0:4000/" in home:
