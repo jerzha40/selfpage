@@ -1,0 +1,17 @@
+services:
+  selfpage:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: selfres-academic-pages:local
+    ports:
+      - "127.0.0.1:4000:4000"
+    volumes:
+      - ./:/workspace:ro
+    environment:
+      SELFRES_SOURCE_DIR: /workspace
+      ACADEMIC_PAGES_SOURCE_DIR: /opt/academic-pages
+      SELFRES_OUTPUT_DIR: /worksite
+      JEKYLL_ENV: development
+    init: true
+    command: serve

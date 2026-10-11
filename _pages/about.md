@@ -19,10 +19,10 @@ I am now working to turn selected experiments into **reproducible, documented wo
 
 ### Explore
 
-- [Research](/research/) — the problems I am working on
-- [Pantheon](/portfolio/) — selected experiments and finished works
-- [My Story](/story/) — how the work began
-- [CV](/cv/) — a compact academic record
-- [Contact](/contact/) — write to me
+- [Research]({{ '/research/' | relative_url }}) — the problems I am working on
+- [Pantheon]({{ '/portfolio/' | relative_url }}) — selected experiments and finished works
+- [My Story]({{ '/story/' | relative_url }}) — how the work began
+- [CV]({{ '/cv/' | relative_url }}) — a compact academic record
+- [Contact]({{ '/contact/' | relative_url }}) — write to me
 
 This website is a living record. Its projects have different levels of completeness, and I try to make those differences visible.

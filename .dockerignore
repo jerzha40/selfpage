@@ -1,0 +1,5 @@
+# Only the site preparation script is needed in the Docker build context.
+**
+!scripts/
+!scripts/prepare-site.sh
+!Dockerfile

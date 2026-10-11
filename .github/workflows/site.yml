@@ -1,0 +1,70 @@
+name: SelfRes Academic Pages
+
+on:
+  push:
+    branches:
+      - main
+      - rebuild/academic-pages-v1
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout SelfRes content
+        uses: actions/checkout@v4
+        with:
+          path: overlay
+
+      - name: Checkout pinned Academic Pages
+        uses: actions/checkout@v4
+        with:
+          repository: academicpages/academicpages.github.io
+          ref: c089e79c7bce7ff453de525bc0bb80c261400cf6
+          path: upstream
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+
+      - name: Prepare site from template and content overlay
+        run: sh overlay/scripts/prepare-site.sh prepare
+        env:
+          SELFRES_SOURCE_DIR: ${{ github.workspace }}/overlay
+          ACADEMIC_PAGES_SOURCE_DIR: ${{ github.workspace }}/upstream
+          SELFRES_OUTPUT_DIR: ${{ github.workspace }}/build-site
+
+      - name: Install dependencies and build
+        working-directory: build-site
+        run: |
+          gem install bundler -v 2.3.26 --no-document
+          bundle _2.3.26_ install
+          bundle exec jekyll build --strict_front_matter --config _config.yml,_config_selfres.yml
+
+      - name: Upload pages artifact
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build-site/_site
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

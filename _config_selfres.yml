@@ -1,0 +1,15 @@
+# Overrides the pinned upstream Academic Pages _config.yml.
+locale: "en-US"
+site_theme: "air"
+title: "Jinrui Zhang"
+title_separator: "-"
+name: "Jinrui Zhang"
+description: "Mathematics, numerical inverse problems, and computational work."
+url: "https://jerzha40.github.io"
+baseurl: "/selfpage"
+repository: "jerzha40/selfpage"
+author:
+  name: "Jinrui Zhang"
+  bio: "Mathematics graduate student at Jilin University. Need nerves of tungsten."
+  location: "Jilin University"
+  email: "jerryzhang40@gmail.com"
