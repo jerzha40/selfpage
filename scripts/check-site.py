@@ -22,6 +22,7 @@ routes = (
     "portfolio/index.html",
     "portfolio/firstattempt/index.html",
     "portfolio/scattering-lab/index.html",
+    "portfolio/operator-learning/index.html",
     "story/index.html",
     "cv/index.html",
     "contact/index.html",
