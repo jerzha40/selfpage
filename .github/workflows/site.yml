@@ -10,6 +10,12 @@ on:
       - main
   workflow_dispatch:
 
+# Serialize builds and deployments on the same branch. Without this, rapid
+# consecutive pushes can race to publish and GitHub Pages rejects one of them.
+concurrency:
+  group: selfres-portfolio-${{ github.ref }}
+  cancel-in-progress: false
+
 permissions:
   contents: read
 
